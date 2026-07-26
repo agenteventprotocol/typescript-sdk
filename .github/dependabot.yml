@@ -1,0 +1,18 @@
+# Automated dependency updates: the GitHub Actions used by CI, and the
+# package's dev dependencies (the SDK itself has zero runtime dependencies).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      npm:
+        patterns: ["*"]
