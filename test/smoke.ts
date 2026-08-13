@@ -1,4 +1,4 @@
-// End-to-end smoke for @aep/sdk against the reference relay: emit over HTTP,
+// End-to-end smoke for @agenteventprotocol/sdk against the reference relay: emit over HTTP,
 // consume over SSE (dedupe + positions), control round-trip over WS with a
 // second SDK instance acting as the target. Run via test/run-smoke.sh.
 import { ControlTarget, Emitter, subscribe, ControlClient, NackError, TransportError, httpTransport, wsTransport, jsonlSink, ulid } from '../src/index.js';

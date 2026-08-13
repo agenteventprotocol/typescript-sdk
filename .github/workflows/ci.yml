@@ -1,4 +1,4 @@
-# @aep/sdk CI — strict typecheck + dist build + end-to-end smoke (against the
+# @agenteventprotocol/sdk CI — strict typecheck + dist build + end-to-end smoke (against the
 # vendored relay fixture), plus a regen-diff job that regenerates src/gen/
 # from the spec repo pinned in SPEC_VERSION and fails on any drift.
 name: ci

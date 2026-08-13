@@ -1,5 +1,5 @@
 {
-  "name": "@aep/sdk",
+  "name": "@agenteventprotocol/sdk",
   "version": "0.1.0-dev",
   "private": true,
   "description": "AEP 0.1 SDK: emit/consume/control helpers over the schema-generated envelope and payload types",

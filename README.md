@@ -1,4 +1,4 @@
-# `@aep/sdk`: the official AEP TypeScript SDK
+# `@agenteventprotocol/sdk`: the official AEP TypeScript SDK
 
 **Typed emit/consume/control helpers for the
 [Agent Event Protocol](https://github.com/agenteventprotocol/agent-event-protocol), with
@@ -35,13 +35,13 @@ The published artifact ships compiled `dist/` (built on `prepack` with
 — no `@types/node`, no `skipLibCheck` — typechecks against it out of the box.
 
 The package is **ESM-only** (`"type": "module"`, a single root export, no
-CommonJS build): load it with `import`; `require('@aep/sdk')` is not
+CommonJS build): load it with `import`; `require('@agenteventprotocol/sdk')` is not
 supported.
 
 ## Quickstart
 
 ```ts
-import { Emitter, wsTransport, subscribe, ControlClient } from '@aep/sdk';
+import { Emitter, wsTransport, subscribe, ControlClient } from '@agenteventprotocol/sdk';
 
 const t = wsTransport('http://127.0.0.1:8787', { agent: 'my-agent', host: 'host-1' });
 const session = new Emitter({ agent: 'my-agent', host: 'host-1', sink: t.sink, epoch: 1 })
@@ -66,7 +66,7 @@ await ctl.send({ type: 'control.attention.respond', session: 's_001',
 | `src/control.ts` | `ControlClient`: `send()` resolves on the correlated ack, rejects `NackError` on nack or synthesized `timeout`, retries reuse the command `id` (AEP-0004); `roster()` returns the live-claim snapshot (AEP-0003 §4.1); `reconnectDelayMs` and `socketFactory` (a `ControlSocket` seam) options. `ControlTarget`: target-side dedupe, one ack per deduplicated command, `unsupported` nack (§7) |
 | `src/validate.ts` | `validateEvent()`: dependency-free structural envelope validation mirroring `aep-event.schema.json` at the `SPEC_VERSION` pin — schema patterns verbatim, documented `date-time`/`uri` format approximations, stable rule ids (see Validation below) |
 | `src/projection.ts` | `StateProjection` / `projectState()`: fold events into per-session state — lifecycle, runs, pending attention, resume position — plus the protocol violations the fold surfaces (see State projection below) |
-| `src/testing.ts` | Relay-free testing utilities behind the `@aep/sdk/testing` subpath: `MemorySink`, `ScriptedSource`, `ControlStub` — both control sides: the target's recording emitter and acks, plus a fake-socket `socketFactory` for `ControlClient` (see Testing utilities below) |
+| `src/testing.ts` | Relay-free testing utilities behind the `@agenteventprotocol/sdk/testing` subpath: `MemorySink`, `ScriptedSource`, `ControlStub` — both control sides: the target's recording emitter and acks, plus a fake-socket `socketFactory` for `ControlClient` (see Testing utilities below) |
 | `src/transports.ts` | `httpTransport` (POST ingest, `timeoutMs`-bounded), `wsTransport` (duplex hello + inbound commands, `reconnectDelayMs`), `jsonlSink` (append-only JSONL file capture, the stdio/file binding of AEP-0003 §3.1 — write errors propagate to the emit caller) |
 | `src/errors.ts` | `TransportError`: the typed transport-failure taxonomy (see Errors below) |
 | `test/` | End-to-end smoke (`test/run-smoke.sh`) against a vendored snapshot of the reference relay (`test/fixtures/relay/`) |
@@ -128,7 +128,7 @@ timers.
 
 ## Testing utilities
 
-`@aep/sdk/testing` ships the pieces a test suite needs to exercise emitters,
+`@agenteventprotocol/sdk/testing` ships the pieces a test suite needs to exercise emitters,
 consumers, and control targets **entirely in-process** — no relay, no
 network, no vendored fixture server:
 
@@ -157,8 +157,8 @@ network, no vendored fixture server:
   `roster()`).
 
 ```ts
-import { ScriptedSource, ControlStub } from '@aep/sdk/testing';
-import { ControlTarget, projectState } from '@aep/sdk';
+import { ScriptedSource, ControlStub } from '@agenteventprotocol/sdk/testing';
+import { ControlTarget, projectState } from '@agenteventprotocol/sdk';
 
 const src = new ScriptedSource({ agent: 'my-agent' });
 const s = src.session('s_001');
@@ -176,8 +176,8 @@ const state = projectState(src.events);   // assert on sessions/runs/pending
 Client-side control tests run relay-free the same way:
 
 ```ts
-import { ControlClient } from '@aep/sdk';
-import { ControlStub } from '@aep/sdk/testing';
+import { ControlClient } from '@agenteventprotocol/sdk';
+import { ControlStub } from '@agenteventprotocol/sdk/testing';
 
 const stub = new ControlStub();
 const ctl = new ControlClient({ url: 'http://stub', agent: 'console', host: 'h1',
@@ -237,7 +237,7 @@ conditional (`agent.*` events are sessionless; command frames and
 requires `session` and `seq`).
 
 ```ts
-import { validateEvent } from '@aep/sdk';
+import { validateEvent } from '@agenteventprotocol/sdk';
 
 const issues = validateEvent(JSON.parse(line));
 if (issues.length) console.error(issues.map((i) => `${i.rule}(${i.attr ?? ''}): ${i.message}`));

@@ -1,5 +1,5 @@
 /**
- * Testing utilities (the `@aep/sdk/testing` subpath): everything folds
+ * Testing utilities (the `@agenteventprotocol/sdk/testing` subpath): everything folds
  * in-process — no relay, no network, no fixture server.
  *
  * - {@link MemorySink} records emitted Events; pass `.sink` to an `Emitter`.

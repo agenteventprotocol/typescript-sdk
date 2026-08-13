@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# @aep/sdk end-to-end smoke: starts the vendored relay fixture, transpiles the
+# @agenteventprotocol/sdk end-to-end smoke: starts the vendored relay fixture, transpiles the
 # SDK + smoke test, runs it, and tears down. Requires Node >= 22 and npx, plus
 # `npm ci` beforehand (the relay fixture needs the `ws` dev dependency).
 set -euo pipefail

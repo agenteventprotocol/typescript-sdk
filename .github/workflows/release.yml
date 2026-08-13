@@ -1,4 +1,4 @@
-# Release — tag-triggered publish of @aep/sdk to npm with provenance.
+# Release — tag-triggered publish of @agenteventprotocol/sdk to npm with provenance.
 # Dormant until a `v*` tag exists; tagging is a maintainer action
 # (RELEASING.md). The guards make a stray tag safe: the tag must equal
 # package.json's version exactly, and a package still carrying

@@ -1,6 +1,6 @@
 # Releasing
 
-How `@aep/sdk` ships to npm. The versioning **policy** is the
+How `@agenteventprotocol/sdk` ships to npm. The versioning **policy** is the
 organization's canonical
 [VERSIONING.md](https://github.com/agenteventprotocol/agent-event-protocol/blob/main/VERSIONING.md)
 in the protocol repository: the package versions independently under
@@ -17,8 +17,8 @@ canonical policy in
 in the protocol repository. This section states how those rules apply here.
 
 **Public API.** Everything importable from the package's two entry points
-— the root `@aep/sdk` (`src/index.ts`, published as `dist/index.js` /
-`dist/index.d.ts`) and the `@aep/sdk/testing` subpath (`src/testing.ts`,
+— the root `@agenteventprotocol/sdk` (`src/index.ts`, published as `dist/index.js` /
+`dist/index.d.ts`) and the `@agenteventprotocol/sdk/testing` subpath (`src/testing.ts`,
 published as `dist/testing.js` / `dist/testing.d.ts`: `MemorySink`,
 `ScriptedSource`, `ControlStub` — target side and client side:
 `socketFactory`, `sent`, `accept`, `reject`, `rosterReply` — and their
@@ -99,7 +99,7 @@ tag safe:
 4. **Tag and push the tag.**
 
    ```sh
-   git tag -a v0.1.0 -m "@aep/sdk 0.1.0"
+   git tag -a v0.1.0 -m "@agenteventprotocol/sdk 0.1.0"
    git push origin v0.1.0
    ```
 
@@ -108,7 +108,7 @@ tag safe:
 
 ## One-time registry setup (before the first tag)
 
-- Confirm the npm `@aep` scope and this package's publish rights.
+- Confirm the npm `@agenteventprotocol` scope and this package's publish rights.
 - Create the `NPM_TOKEN` repository secret (a granular, publish-only
   automation token); the workflow authenticates with it and requests the
   provenance attestation via the job's OIDC `id-token` permission.
