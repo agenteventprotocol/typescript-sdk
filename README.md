@@ -19,15 +19,18 @@ with correlated acks. It runs on Node ≥ 22 or any runtime with `fetch`,
 
 ## Install
 
-**Unpublished — build from the repo.** The package is not on npm yet
-(`private: true` until the protocol's `v0.1` tag); until then:
+```sh
+npm install @agenteventprotocol/sdk
+```
+
+The published version is the `0.1.0-dev` pre-release; the `0.1.0` final
+follows the protocol's `v0.1` tag. To work from a clone instead:
 
 ```sh
 git clone https://github.com/agenteventprotocol/typescript-sdk.git
 cd typescript-sdk
 npm install          # dev dependency for the test fixture
 npm run build        # compiles src/ to dist/ (js + d.ts + maps)
-npm pack             # produces the installable tarball
 ```
 
 The published artifact ships compiled `dist/` (built on `prepack` with
