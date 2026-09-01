@@ -3,6 +3,7 @@
   "version": "0.1.0-dev",
   "description": "AEP 0.1 SDK: emit/consume/control helpers over the schema-generated envelope and payload types",
   "license": "Apache-2.0",
+  "author": "Agent Event Protocol maintainers <dev@agenteventprotocol.io>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/agenteventprotocol/typescript-sdk.git"
