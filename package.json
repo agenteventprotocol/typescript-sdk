@@ -45,6 +45,6 @@
     "prepack": "npm run build"
   },
   "devDependencies": {
-    "ws": "^8.18.0"
+    "ws": "^8.21.3"
   }
 }
